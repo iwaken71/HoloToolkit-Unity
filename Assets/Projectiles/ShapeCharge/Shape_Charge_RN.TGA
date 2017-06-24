@@ -1,0 +1,11 @@
+Begin Object Class=Texture2D Name="Shape_Charge_RN"
+   Begin Object Class=AssetImportData Name="AssetImportData"
+   End Object
+   Begin Object Name="AssetImportData"
+   End Object
+   ImportedSize=(X=2048,Y=2048)
+   Source=(Id=354AE5114CE5D1E5FFB7528A9E7C8620,SizeX=2048,SizeY=2048,NumSlices=1,NumMips=1,bPNGCompressed=True,Format=TSF_G8)
+   LightingGuid=EC5A1E8946B5C469E4ECE5AE17730D7C
+   AssetImportData=AssetImportData'AssetImportData'
+   AlphaCoverageThresholds=(X=0.000000,Y=0.000000,Z=0.000000,W=1.000000)
+End Object
