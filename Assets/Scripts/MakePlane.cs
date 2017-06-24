@@ -24,7 +24,7 @@ namespace XRHack {
             //	エアタップされたらメッシュ作るの止めて、壁とか作る
             SpatialMappingManager.Instance.StopObserver();
             SurfaceMeshesToPlanes.Instance.MakePlanes();
-            GameManager.Instance.GenerateBombAround(20);
+           // GameManager.Instance.GenerateBombAround(20);
 
         }
 

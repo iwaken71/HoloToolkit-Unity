@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33632709982681714}
   - component: {fileID: 23480369174692882}
   - component: {fileID: 54375469843863422}
-  - component: {fileID: 64835225110575136}
   - component: {fileID: 114996189387088748}
+  - component: {fileID: 136540153648238784}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Bomb
@@ -98,20 +98,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64835225110575136
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1478263057988312}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4eb0e0653658f4ac791803c6c34feb7f, type: 3}
 --- !u!114 &114996189387088748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,3 +109,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41832935d344b9b8c9df3802f4a227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &136540153648238784
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478263057988312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.12
+  m_Height: 1.23
+  m_Direction: 2
+  m_Center: {x: 0.00000001862645, y: -0.00000006332994, z: 0.6172986}

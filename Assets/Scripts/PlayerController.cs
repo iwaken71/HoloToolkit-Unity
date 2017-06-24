@@ -11,15 +11,15 @@ namespace XRHack{
 		GameObject[] bombs;
 
 		void Awake(){
-			bombPrefab = Resources.Load("Bomb") as GameObject;
+			//bombPrefab = Resources.Load("Bomb") as GameObject;
 
 
 		}
 		
 		// Use this for initialization
 		void Start () {
-			InputManager.Instance.PushFallbackInputHandler(gameObject);
-            bombs = GameObject.FindGameObjectsWithTag("Bomb");
+			//InputManager.Instance.PushFallbackInputHandler(gameObject);
+           // bombs = GameObject.FindGameObjectsWithTag("Bomb");
 		
 		}
 			
@@ -35,11 +35,11 @@ namespace XRHack{
 					hit.collider.GetComponent<BombController> ().Explosion ();
 				}
 			}
-			#if UNITY_EDITOR
-			if (Input.GetMouseButtonDown (0)) {
-				Generate();
-			}
-			#endif
+//			#if UNITY_EDITOR
+//			if (Input.GetMouseButtonDown (0)) {
+//				Generate();
+//			}
+//			#endif
 
 		}
 /*
@@ -48,17 +48,17 @@ namespace XRHack{
 		}
         */
 
-        void AroundGenerate(int n) {
-            for (int i = 0; i < n; i++) {
-                Vector3 pos = transform.position + new Vector3(Random.Range(-3.0f,3.0f), 30,Random.Range(-3.0f, 3.0f));
-                Instantiate(bombPrefab, pos, transform.rotation);
-            }
-        }
+//        void AroundGenerate(int n) {
+//            for (int i = 0; i < n; i++) {
+//                Vector3 pos = transform.position + new Vector3(Random.Range(-3.0f,3.0f), 30,Random.Range(-3.0f, 3.0f));
+//                Instantiate(bombPrefab, pos, transform.rotation);
+//            }
+//        }
 
-		void Generate(){
-            Vector3 pos = TransformToVector(transform,new Vector3(0,3,3));
-			Instantiate(bombPrefab,pos,transform.rotation);
-		}
+//		void Generate(){
+//            Vector3 pos = TransformToVector(transform,new Vector3(0,3,3));
+//			Instantiate(bombPrefab,pos,transform.rotation);
+//		}
 
         Vector3 TransformToVector(Transform trans, Vector3 dir) {
            return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
