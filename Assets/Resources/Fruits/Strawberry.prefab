@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54674333829120874}
   m_Layer: 0
   m_Name: Strawberry
-  m_TagString: Untagged
+  m_TagString: Fluit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
