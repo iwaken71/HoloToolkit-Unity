@@ -481,6 +481,11 @@ Prefab:
       propertyPath: TrianglesPerCubicMeter
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011154029958, guid: 2ed75ffdf9031c94e8bce4b3d17b9928,
+        type: 2}
+      propertyPath: drawVisualMeshes
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ed75ffdf9031c94e8bce4b3d17b9928, type: 2}
   m_IsPrefabParent: 0
@@ -614,11 +619,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4868736489504128, guid: db6a7c61a6631504b97cf2ca03680ff4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.6989987
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4868736489504128, guid: db6a7c61a6631504b97cf2ca03680ff4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.018971145
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4868736489504128, guid: db6a7c61a6631504b97cf2ca03680ff4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -720,7 +725,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2143125411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -2.3, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
