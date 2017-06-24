@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23480369174692882}
   - component: {fileID: 54375469843863422}
   - component: {fileID: 64835225110575136}
+  - component: {fileID: 114996189387088748}
   m_Layer: 0
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478263057988312}
   m_LocalRotation: {x: -0.83431906, y: 0, z: 0, w: 0.5512819}
-  m_LocalPosition: {x: -0, y: 0, z: 3.13}
+  m_LocalPosition: {x: -0, y: 15.34, z: 3.13}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,3 +112,14 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4eb0e0653658f4ac791803c6c34feb7f, type: 3}
+--- !u!114 &114996189387088748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478263057988312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf41832935d344b9b8c9df3802f4a227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

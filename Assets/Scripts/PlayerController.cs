@@ -8,6 +8,8 @@ namespace XRHack{
 		RaycastHit hit;
 		GameObject bombPrefab;
 
+		GameObject[] bombs;
+
 		void Awake(){
 			bombPrefab = Resources.Load("Bomb") as GameObject;
 
@@ -17,12 +19,17 @@ namespace XRHack{
 		// Use this for initialization
 		void Start () {
 			InputManager.Instance.PushFallbackInputHandler(gameObject);
+            bombs = GameObject.FindGameObjectsWithTag("Bomb");
+		
 		}
 			
 			// Update is called once per frame
 		void Update ()
 		{
-			Ray ray = new Ray (transform.position, -transform.up);
+			
+			
+			
+			Ray ray = new Ray (transform.position, Vector3.down);
 			if (Physics.SphereCast (ray, 0.5f, out hit)) {
 				if (hit.collider.tag == "Bomb") {
 					hit.collider.GetComponent<BombController> ().Explosion ();
@@ -40,8 +47,15 @@ namespace XRHack{
 			Generate();
 		}
 
+
+
 		void Generate(){
-			Instantiate(bombPrefab,transform.position + new Vector3(0,3,2),transform.rotation);
+            Vector3 pos = TransformToVector(transform,new Vector3(0,3,3));
+			Instantiate(bombPrefab,pos,transform.rotation);
 		}
+
+        Vector3 TransformToVector(Transform trans, Vector3 dir) {
+           return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
+        }
 	}
 }
