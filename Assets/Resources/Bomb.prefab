@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54375469843863422}
   - component: {fileID: 64835225110575136}
   m_Layer: 0
-  m_Name: 120mm_apam_cls
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
