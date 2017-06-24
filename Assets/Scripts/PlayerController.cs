@@ -4,7 +4,7 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 
 namespace XRHack{
-	public class PlayerController : MonoBehaviour,IInputClickHandler {
+	public class PlayerController : MonoBehaviour {
 		RaycastHit hit;
 		GameObject bombPrefab;
 
@@ -42,12 +42,18 @@ namespace XRHack{
 			#endif
 
 		}
-
+/*
 		public void OnInputClicked(InputClickedEventData e){
 			Generate();
 		}
+        */
 
-
+        void AroundGenerate(int n) {
+            for (int i = 0; i < n; i++) {
+                Vector3 pos = transform.position + new Vector3(Random.Range(-3.0f,3.0f), 30,Random.Range(-3.0f, 3.0f));
+                Instantiate(bombPrefab, pos, transform.rotation);
+            }
+        }
 
 		void Generate(){
             Vector3 pos = TransformToVector(transform,new Vector3(0,3,3));
