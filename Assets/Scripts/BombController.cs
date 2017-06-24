@@ -15,7 +15,7 @@ namespace XRHack{
 
 		}
 		public void Explosion(){
-			GameObject explosionObject = Instantiate(explosionPrefab,transform.position,transform.rotation)as GameObject;
+			GameObject explosionObject = Instantiate(explosionPrefab,transform.position + transform.forward*2,transform.rotation)as GameObject;
             Destroy(explosionObject,5);
 			Destroy(this.gameObject);
 		}
