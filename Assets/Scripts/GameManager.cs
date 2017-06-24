@@ -38,7 +38,7 @@ namespace XRHack {
                 Instantiate(fruitPrefabs[index2], pos, Random.rotation);
             }
 
-			GenerateSoccerBall(3);
+			GenerateSoccerBall(5);
 
         }
 

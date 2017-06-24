@@ -31,9 +31,15 @@ namespace XRHack{
 			
 			Ray ray = new Ray (transform.position, Vector3.down);
 			if (Physics.SphereCast (ray, 0.5f, out hit)) {
-				if (hit.collider.tag == "Bomb") {
+				string tagName = hit.collider.tag;
+				if (tagName == "Bomb") {
 					hit.collider.GetComponent<BombController> ().Explosion ();
-				}
+				} else if (tagName == "SoccerBall") {
+					KickBall(hit.collider.gameObject,100);
+                    hit.collider.GetComponent<SoccerBallController>().PlayerKickSound();
+
+
+                }
 			}
 //			#if UNITY_EDITOR
 //			if (Input.GetMouseButtonDown (0)) {
@@ -63,5 +69,14 @@ namespace XRHack{
         Vector3 TransformToVector(Transform trans, Vector3 dir) {
            return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
         }
+
+        void KickBall (GameObject ball,float power)
+		{	
+			Vector3 vec = Vector3.Scale( (ball.transform.position - transform.position),new Vector3(1,0,1)).normalized;
+			Vector3 kickForce = (vec + Vector3.up).normalized * power;
+
+			ball.GetComponent<Rigidbody>().AddForce(kickForce);
+
+		}
 	}
 }
