@@ -34,11 +34,13 @@ namespace XRHack{
 				string tagName = hit.collider.tag;
 				if (tagName == "Bomb") {
 					hit.collider.GetComponent<BombController> ().Explosion ();
-				} else if (tagName == "SoccerBall") {
+				} 
+			}
+			if (Physics.SphereCast (ray, 1f, out hit)) {
+				string tagName = hit.collider.tag;
+				if (tagName == "SoccerBall") {
 					KickBall(hit.collider.gameObject,100);
                     hit.collider.GetComponent<SoccerBallController>().PlayerKickSound();
-
-
                 }
 			}
 //			#if UNITY_EDITOR
