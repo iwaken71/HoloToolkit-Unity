@@ -36,7 +36,7 @@ namespace XRHack{
 					hit.collider.GetComponent<BombController> ().Explosion ();
 				} 
 			}
-			if (Physics.SphereCast (ray, 1f, out hit)) {
+			if (Physics.SphereCast (ray, 1.5f, out hit)) {
 				string tagName = hit.collider.tag;
 				if (tagName == "SoccerBall") {
 					KickBall(hit.collider.gameObject,100);

@@ -8,6 +8,8 @@ namespace XRHack {
         GameObject[] bombPrefabs;
         GameObject[] fruitPrefabs;
         GameObject soccerBallPrefab;
+        public State state;
+        public float countDownTimer = 0;
         void Awake() {
 			bombPrefabs = Resources.LoadAll<GameObject>("Bombs");
 			fruitPrefabs = Resources.LoadAll<GameObject>("Fruits");
@@ -15,7 +17,8 @@ namespace XRHack {
         }
         // Use this for initialization
         void Start() {
-            StartCoroutine(GenerateBombAround(20, 7));
+            //StartCoroutine(GenerateBombAround(20, 7));
+            state = State.Ready;
         }
 
         // Update is called once per frame
@@ -51,7 +54,34 @@ namespace XRHack {
             }
 		}
 
+		public void ChangeState (State input)
+		{
+			State currentState = state;
+			if (input == State.Ready) {
+				
+
+
+			} else if (input == State.Play) {
+
+
+			} else if (input == State.GameOver) {
+
+
+			}
+
+
+		}
+
 
     }
 
+
+
+}
+
+
+public enum State{
+	Ready,
+	Play,
+	GameOver
 }
