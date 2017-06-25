@@ -33,6 +33,8 @@ namespace XRHack{
 			if (Physics.SphereCast (ray, 0.5f, out hit)) {
 				string tagName = hit.collider.tag;
 				if (tagName == "Bomb") {
+                    GameManager.Instance.ChangeState(State.GameOver);
+                    GameManager.Instance.SetSelectBomb(hit.collider.gameObject);
 					hit.collider.GetComponent<BombController> ().Explosion ();
 				} 
 			}

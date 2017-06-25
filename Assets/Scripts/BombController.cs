@@ -6,6 +6,7 @@ namespace XRHack{
 	public class BombController : MonoBehaviour {
 
 		GameObject explosionPrefab;
+		bool selected = false;
    
 
 		void Awake ()
@@ -14,6 +15,7 @@ namespace XRHack{
 
 
 		}
+
 		public void Explosion(){
 			Vector3 pos =TransformToVector(Camera.main.transform,new Vector3(0,-0.1f,1.3f));
 			GameObject explosionObject = Instantiate(explosionPrefab,pos,transform.rotation)as GameObject;
@@ -24,5 +26,7 @@ namespace XRHack{
 		Vector3 TransformToVector(Transform trans, Vector3 dir) {
            return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
         }
+
+
 	}
 }
