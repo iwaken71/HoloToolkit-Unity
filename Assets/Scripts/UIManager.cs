@@ -51,12 +51,17 @@ namespace XRHack{
 		}
 
 		IEnumerator DisPlay(){
-     
-			SetEnable(true);
-			yield return new WaitForSeconds(7);
+
+            yield return new WaitForSeconds(1f);
+            SetEnable(true);
+			yield return new WaitForSeconds(5);
+            GameManager.Instance.DisPlayModel();
 			SetEnable(false);
-            yield return new WaitForSeconds(5);
-           // GameManager.Instance.ChangeState(State.Ready);
+            yield return new WaitForSeconds(15);
+
+           // if (GameManager.Instance.state == State.GameOver) {
+             //   GameManager.Instance.ChangeState(State.Ready);
+          //  }
           
         }
 

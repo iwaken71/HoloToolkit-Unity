@@ -15,7 +15,7 @@ namespace XRHack {
         GameObject fruitParent;
         GameObject ballParent;
 
-        GameObject selectedBomb = null;
+        public GameObject selectedBomb = null;
         void Awake() {
 			bombPrefabs = Resources.LoadAll<GameObject>("Bombs");
 			fruitPrefabs = Resources.LoadAll<GameObject>("Fruits");
@@ -78,8 +78,7 @@ namespace XRHack {
                 Destroy(selectedBomb);
 			selectedBomb = Instantiate(input) as GameObject;
 			selectedBomb.GetComponent<Rigidbody>().useGravity = false;
-            selectedBomb.transform.position = TransformToVector(Camera.main.transform, new Vector3(0, 0, 1.5f));
-            selectedBomb.transform.rotation = Quaternion.identity;
+            selectedBomb.transform.position = new Vector3(999,999,999);
             selectedBomb.transform.tag = "Model";
             // selectedBomb.SetActive(false);
 
@@ -180,6 +179,14 @@ namespace XRHack {
 		}
 		Vector3 TransformToVector(Transform trans, Vector3 dir) {
            return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
+        }
+
+        public void DisPlayModel() {
+            if (selectedBomb != null) { 
+            Vector3 vec = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+            selectedBomb.transform.position = Camera.main.transform.position + vec * 1.5f;
+            selectedBomb.transform.rotation = Quaternion.identity;
+            }
         }
     }
 }
