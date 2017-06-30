@@ -7,7 +7,7 @@ namespace XRHack{
 
 		GameObject explosionPrefab;
 		bool selected = false;
-   
+
 
 		void Awake ()
 		{	
@@ -17,9 +17,9 @@ namespace XRHack{
 		}
 
 		public void Explosion(){
-			Vector3 pos =TransformToVector(Camera.main.transform,new Vector3(0,-0.1f,1.3f));
+			Vector3 pos = TransformToVector(Camera.main.transform,new Vector3(0,-0.1f,1.3f));
 			GameObject explosionObject = Instantiate(explosionPrefab,pos,transform.rotation)as GameObject;
-            Destroy(explosionObject,5);
+            Destroy(explosionObject,5); //5秒後に消す
 			Destroy(this.gameObject);
 		}
 

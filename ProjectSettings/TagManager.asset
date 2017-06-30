@@ -8,6 +8,7 @@ TagManager:
   - Fluit
   - SoccerBall
   - Model
+  - Goal
   layers:
   - Default
   - TransparentFX

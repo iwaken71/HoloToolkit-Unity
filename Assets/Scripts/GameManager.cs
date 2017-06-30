@@ -10,6 +10,7 @@ namespace XRHack {
         GameObject soccerBallPrefab;
         public State state;
         public float countDownTimer = 5;
+        public float GameOverTimer = 5;
 
         GameObject bombParent;
         GameObject fruitParent;
@@ -48,21 +49,24 @@ namespace XRHack {
 			} else if (state == State.Play) {
 			} else if (state == State.GameOver) {
 				if (selectedBomb != null) {
-
-                    //selectedBomb.transform.position = TransformToVector(Camera.main.transform,new Vector3(0,0,1.5f));
+					GameOverTimer -= Time.deltaTime;
+					//selectedBomb.transform.position = TransformToVector(Camera.main.transform,new Vector3(0,0,1.5f));
                    
-                    if (UIManager.Instance.panel.activeSelf) {
-                        selectedBomb.SetActive(false);
-                    } else {
-                        selectedBomb.SetActive(true);
-                    }
+					if (UIManager.Instance.panel.activeSelf) {
+						selectedBomb.SetActive (false);
+					} else {
+						selectedBomb.SetActive (true);
+					}
 
-                    Vector3 cameraPos = Vector3.Scale(Camera.main.transform.position, new Vector3(1, 0, 1));
-                    Vector3 bombPos = Vector3.Scale(selectedBomb.transform.position, new Vector3(1, 0, 1));
-                    float distance = (cameraPos - bombPos).sqrMagnitude;
-                    if(distance < 0.5f * 0.5f){
-                        ChangeState(State.Ready);
-                    }
+					Vector3 cameraPos = Vector3.Scale (Camera.main.transform.position, new Vector3 (1, 0, 1));
+					Vector3 bombPos = Vector3.Scale (selectedBomb.transform.position, new Vector3 (1, 0, 1));
+					float distance = (cameraPos - bombPos).sqrMagnitude;
+					if (distance < 0.5f * 0.5f) {
+						ChangeState (State.Ready);
+					}
+					if (GameOverTimer <= 0) {
+						ChangeState (State.Ready);
+					}
 
                 }
 			}
@@ -103,7 +107,7 @@ namespace XRHack {
                 Instantiate(fruitPrefabs[index2], pos, Random.rotation);
             }*/
 
-            GenerateSoccerBalls(5);
+            //GenerateSoccerBalls(5);
 			
 
         }
@@ -120,12 +124,13 @@ namespace XRHack {
 		{
 			for (int i = 0; i < n; i++) {
                float theta = Random.Range(0f,360f);
-               float r = Random.Range(1.0f,2.0f);
+               float r = Random.Range(0.5f,1.0f);
 				Vector3 pos = center + new Vector3(Mathf.Cos(theta*Mathf.PI/180),0,Mathf.Sin(theta*Mathf.PI/180))*r;
 				int index = Random.Range(0,bombPrefabs.Length);
 
                GameObject obj =  Instantiate(bombPrefabs[index], pos, Random.rotation)as GameObject;
                obj.transform.parent = bombParent.transform;
+              // obj.AddComponent<DisplayObject>();
             }
 
 		}
@@ -133,11 +138,12 @@ namespace XRHack {
 		{
 			for (int i = 0; i < n; i++) {
                float theta = Random.Range(0f,360f);
-               float r = Random.Range(1.0f,2.0f);
+               float r = Random.Range(0.5f,1.0f);
 				Vector3 pos = center + new Vector3(Mathf.Cos(theta*Mathf.PI/180),0,Mathf.Sin(theta*Mathf.PI/180))*r;
 				int index2 = Random.Range(0,fruitPrefabs.Length);
                 var  obj =  Instantiate(fruitPrefabs[index2], pos, Random.rotation) as GameObject;
                 obj.transform.parent = fruitParent.transform;
+				//obj.AddComponent<DisplayObject>();
             }
 
 		}
@@ -145,9 +151,10 @@ namespace XRHack {
         void GenerateSoccerBalls (int n)
 		{
 			for (int i = 0; i < n; i++) {
-                Vector3 pos = Camera.main.transform.position + new Vector3(Random.Range(-3.0f, 3.0f), 0, Random.Range(1f, 5f));
+                Vector3 pos = Camera.main.transform.position + new Vector3(Random.Range(-3.0f, 3.0f), 0, Random.Range(2f, 5f));
                 GameObject obj =   Instantiate(soccerBallPrefab, pos, Random.rotation)as GameObject;
                 obj.transform.parent = ballParent.transform;
+			//	obj.AddComponent<DisplayObject>();
 			    GenerateBomb(5,pos);
 			    GenerateFruit(10,pos);
             }
@@ -159,6 +166,7 @@ namespace XRHack {
             if (input == State.Ready) {
 
                 countDownTimer = 5;
+                GameOverTimer = 5;
                 if (selectedBomb != null) {
                     Destroy(selectedBomb.gameObject);
                 }

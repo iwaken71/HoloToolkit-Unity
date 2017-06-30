@@ -67,7 +67,7 @@ namespace XRHack{
 
 		void LateUpdate ()
 		{	
-			Vector3 pos = TransformToVector(Camera.main.transform,new Vector3(0,0,1.5f));
+			Vector3 pos = TransformToVector(Camera.main.transform,new Vector3(0,0,2f));
 			transform.position =  Vector3.Lerp(transform.position,pos,Time.deltaTime*smoothTime);
             transform.forward = Vector3.Slerp(transform.forward, Camera.main.transform.forward, Time.deltaTime * smoothTime);
 		}

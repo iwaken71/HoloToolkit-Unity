@@ -10,10 +10,13 @@ namespace XRHack{
 
 		GameObject[] bombs;
 
+        public float BombRange = 1f;
+        public float SoccerBallRange = 1.2f;
+
+        public float kickPower = 100f;
+
 		void Awake(){
-			//bombPrefab = Resources.Load("Bomb") as GameObject;
-
-
+			//bombPrefab = Resources.Load("Bomb") as GameObject
 		}
 		
 		// Use this for initialization
@@ -22,29 +25,30 @@ namespace XRHack{
            // bombs = GameObject.FindGameObjectsWithTag("Bomb");
 		
 		}
-			
 			// Update is called once per frame
-		void Update ()
-		{
-			
-			
-			
+        void Update (){
 			Ray ray = new Ray (transform.position, Vector3.down);
-			if (Physics.SphereCast (ray, 0.5f, out hit)) {
-				string tagName = hit.collider.tag;
-				if (tagName == "Bomb") {
+            if (Physics.SphereCast(ray, BombRange, out hit))
+            {
+                string tagName = hit.collider.tag;
+                if (tagName == "Bomb")
+                {
+                    
                     GameManager.Instance.ChangeState(State.GameOver);
                     GameManager.Instance.SetSelectBomb(hit.collider.gameObject);
-					hit.collider.GetComponent<BombController> ().Explosion ();
-				} 
-			}
-			if (Physics.SphereCast (ray, 1.1f, out hit)) {
-				string tagName = hit.collider.tag;
-				if (tagName == "SoccerBall") {
-					KickBall(hit.collider.gameObject,100);
+                    hit.collider.GetComponent<BombController>().Explosion();
+                }
+            }
+            if (Physics.SphereCast(ray, SoccerBallRange, out hit))
+            {
+                string tagName = hit.collider.tag;
+                if (tagName == "SoccerBall")
+                {
+                    KickBall(hit.collider.gameObject, kickPower);
                     hit.collider.GetComponent<SoccerBallController>().PlayerKickSound();
                 }
-			}
+            }
+
 //			#if UNITY_EDITOR
 //			if (Input.GetMouseButtonDown (0)) {
 //				Generate();
