@@ -33,9 +33,9 @@ namespace XRHack{
                 string tagName = hit.collider.tag;
                 if (tagName == "Bomb")
                 {
-                    
-                    GameManager.Instance.ChangeState(State.GameOver);
                     GameManager.Instance.SetSelectBomb(hit.collider.gameObject);
+                    GameManager.Instance.ChangeState(State.GameOver);
+                   // GameManager.Instance.SetSelectBomb(hit.collider.gameObject);
                     hit.collider.GetComponent<BombController>().Explosion();
                 }
             }
@@ -86,5 +86,17 @@ namespace XRHack{
 			ball.GetComponent<Rigidbody>().AddForce(kickForce);
 
 		}
-	}
+
+
+        private void OnTriggerEnter(Collider other) {
+            string tagName = other.tag;
+            if (tagName == "Goal") {
+                Debug.Log("aaddd");
+                Destroy(other.gameObject);
+                UIManager.Instance.SetMessage("Clear!");
+                GameManager.Instance.ReStart();
+            
+            }
+        }
+    }
 }

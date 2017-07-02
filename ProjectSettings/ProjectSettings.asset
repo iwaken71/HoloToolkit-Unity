@@ -10,8 +10,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Iwasaki
-  productName: MineGame
+  companyName: Iwasaki2
+  productName: MineGame3
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -580,14 +580,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: MineGame
+  metroPackageName: MineGame3
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 00f9044b2521d301
-  metroApplicationDescription: MineGame
+  metroApplicationDescription: MineGame3
   wsaImages: {}
   metroTileShortName: HoloToolkit-Unity
   metroCommandLineArgsFile: 

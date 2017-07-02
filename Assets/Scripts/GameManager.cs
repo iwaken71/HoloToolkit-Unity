@@ -8,19 +8,23 @@ namespace XRHack {
         GameObject[] bombPrefabs;
         GameObject[] fruitPrefabs;
         GameObject soccerBallPrefab;
+        GameObject stage1Prefab;
         public State state;
         public float countDownTimer = 5;
-        public float GameOverTimer = 5;
+        public float GameOverTimer = 10;
 
         GameObject bombParent;
         GameObject fruitParent;
         GameObject ballParent;
+
+        GameObject stageObject;
 
         public GameObject selectedBomb = null;
         void Awake() {
 			bombPrefabs = Resources.LoadAll<GameObject>("Bombs");
 			fruitPrefabs = Resources.LoadAll<GameObject>("Fruits");
 			soccerBallPrefab = Resources.Load<GameObject>("SoccerBall");
+            stage1Prefab = Resources.Load<GameObject>("Stage1");
             bombParent = new GameObject("bombParent");
             fruitParent = new GameObject("fruitParent");
             ballParent = new GameObject("ballParent");
@@ -84,6 +88,7 @@ namespace XRHack {
 			selectedBomb.GetComponent<Rigidbody>().useGravity = false;
             selectedBomb.transform.position = new Vector3(999,999,999);
             selectedBomb.transform.tag = "Model";
+            selectedBomb.transform.parent = null;
             // selectedBomb.SetActive(false);
 
         }
@@ -92,11 +97,20 @@ namespace XRHack {
             DeleteAllChildren(ballParent.transform);
             DeleteAllChildren(bombParent.transform);
             DeleteAllChildren(fruitParent.transform);
+            if (stageObject != null) {
+                stageObject.SetActive(false);
+            }
         }
         public void GenerateItems() {
 
             DeleteAllObject();
-           // yield return new WaitForSeconds(timer);
+            if (stageObject != null) {
+                Destroy(stageObject);
+            }
+            stageObject = Instantiate<GameObject>(stage1Prefab, Camera.main.transform.position, Quaternion.identity);
+            stageObject.transform.forward = Vector3.Scale(Camera.main.transform.forward,new Vector3(1,0,1)).normalized;
+
+            // yield return new WaitForSeconds(timer);
            /* for (int i = 0; i < n; i++) {
                 Vector3 pos = transform.position + new Vector3(Random.Range(-3.0f, 3.0f), -0.5f, Random.Range(1f, 5f));
                 int index = Random.Range(0,bombPrefabs.Length);
@@ -166,7 +180,7 @@ namespace XRHack {
             if (input == State.Ready) {
 
                 countDownTimer = 5;
-                GameOverTimer = 5;
+                GameOverTimer = 10;
                 if (selectedBomb != null) {
                     Destroy(selectedBomb.gameObject);
                 }
@@ -176,6 +190,7 @@ namespace XRHack {
                     GenerateItems();
                 }
 			} else if (input == State.GameOver) {
+                //selectedBomb.transform.parent = null;
                 DeleteAllObject();
 
                 UIManager.Instance.SetImage();
@@ -183,7 +198,7 @@ namespace XRHack {
 			}
 
 			state = input;
-            Debug.Log(state);
+            
 		}
 		Vector3 TransformToVector(Transform trans, Vector3 dir) {
            return  trans.position + trans.forward * dir.z + trans.right * dir.x + trans.up * dir.y;
@@ -196,12 +211,30 @@ namespace XRHack {
             selectedBomb.transform.rotation = Quaternion.identity;
             }
         }
+
+
+        public void ReStart() {
+            DeleteAllObject();
+            Invoke("ReStart2",5);
+        }
+
+        void ReStart2() {
+
+            ChangeState(State.Ready);
+        }
+
+
+
+      
     }
+
+    
 }
 
 
 public enum State{
 	Ready,
 	Play,
-	GameOver
+	GameOver,
+    Clear
 }

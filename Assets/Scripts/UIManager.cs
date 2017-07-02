@@ -10,10 +10,12 @@ namespace XRHack{
 		Image image;
 
 		[SerializeField]
-		Text label;
+		Text label,Message;
 
 		public 
-		GameObject panel;
+		GameObject panel,MessagePanel;
+
+
 		
 		Sprite[] sprites;
 
@@ -21,13 +23,24 @@ namespace XRHack{
 
 		void Awake(){
 			sprites = Resources.LoadAll<Sprite>("Images");
-			//panel.transform.Find("Panel");
-		}
+          
+            //panel.transform.Find("Panel");
+        }
 
 		void Start(){
             //SetImage();
             SetEnable(false);
 		}
+
+        public void SetMessage(string message) {
+            Message.text = message;
+
+            Invoke("DeleteMessage",3);
+        }
+
+        void DeleteMessage() {
+            Message.text = "";
+        }
 
 		public void SetImage ()
 		{
@@ -40,7 +53,23 @@ namespace XRHack{
 			//}
 		}
 
-		void SetEnable (bool input)
+        private void Update() {
+
+
+
+            if (GameManager.Instance.state == State.Ready) {
+             
+
+                if (GameManager.Instance.countDownTimer <= 0.1f) {
+                    Message.text = "";
+                } else {
+                    Message.text = ((int)(GameManager.Instance.countDownTimer) + 1).ToString();
+                }
+            }
+         
+        }
+
+        void SetEnable (bool input)
 		{
 			//Debug.Log(input);
             panel.SetActive(input);
